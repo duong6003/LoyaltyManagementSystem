@@ -122,8 +122,8 @@ namespace LoyaltyManagementSystem.Application.Implementations
 
         public List<CollectionDetailViewModel> GetDetails(int collectionId)
         {
-            Collection collection = _collectionRepository.FindById(collectionId);
-            return _mapper.Map<List<CollectionDetail>, List<CollectionDetailViewModel>>(details).ToList();
+            var details = _collectionDetailRepository.FindAll(x => x.CollectionId == collectionId);
+            return details.ProjectTo<CollectionDetailViewModel>(_mapper.ConfigurationProvider).ToList();
         }
 
         public void CreateDetail(CollectionDetailViewModel collectionDetailVm)

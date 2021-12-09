@@ -33,6 +33,7 @@ namespace LoyaltyManagementSystem.WebApi.Areas.Admin.Controllers
         [HttpGet("get-all-active-campaign")]
         public IActionResult GetAll()
         {
+            string token = HttpContext.Session.GetString("Token");
             var model = _campaignService.GetAll();
 
             return new OkObjectResult(model);

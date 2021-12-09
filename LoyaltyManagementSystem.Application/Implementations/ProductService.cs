@@ -23,12 +23,13 @@ namespace LoyaltyManagementSystem.Application.Implementations
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProductService(IRepository<Product, int> productRepository, 
-            IUnitOfWork unitOfWork, IMapper mapper)
+        public ProductService(IRepository<Product, int> productRepository,
+            IUnitOfWork unitOfWork, IMapper mapper, IRepository<Inventory, int> inventoryRepository)
         {
             _productRepository = productRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _inventoryRepository = inventoryRepository;
         }
 
         public ProductViewModel Create(ProductViewModel productVm)
